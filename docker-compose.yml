@@ -28,3 +28,17 @@ services:
     ports:
       - "5540:5540"
     restart: always
+
+  django:
+    build: . #this builds from the docker file
+    container_name: django_app
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "
+        python manage.py runserver 0.0.0.0:8000
+      "
