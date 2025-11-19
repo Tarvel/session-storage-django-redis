@@ -36,6 +36,8 @@ services:
     depends_on:
       - postgres
       - redis
+    volumes:
+      - ./app:/app # bind "app" folder locally to "app" folder on container
     ports:
       - "8000:8000"
     command: >
